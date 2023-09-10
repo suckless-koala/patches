@@ -1,0 +1,4 @@
+- `dwm-dracula-6.4.diff` obviously applies the dracula theme.
+- `dwm-singlemon-6.4.diff` strips out code that is unnecessary for those with a single monitor setup and also, thereby, removes libXinerama as a dependency -- it's a patch which makes dwm more suckless than vanilla dwm
+- `dwm-cleanup.diff` adds additional files (specifically, `config.h`, `*.orig`, `*.rej`) to the clean function in the Makefile
+- `dwm-koala-config-6.4.diff` modifies the config according to some personal preferences
