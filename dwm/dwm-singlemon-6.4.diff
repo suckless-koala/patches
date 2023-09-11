@@ -1,6 +1,6 @@
 diff --color -u a/config.def.h b/config.def.h
 --- a/config.def.h	2022-10-04 18:38:18.000000000 +0100
-+++ b/config.def.h	2023-09-11 13:13:37.935848657 +0100
++++ b/config.def.h	2023-09-11 14:39:32.958302327 +0100
 @@ -80,10 +80,6 @@
  	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
  	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
@@ -14,7 +14,7 @@ diff --color -u a/config.def.h b/config.def.h
  	TAGKEYS(                        XK_3,                      2)
 diff --color -u a/config.mk b/config.mk
 --- a/config.mk	2022-10-04 18:38:18.000000000 +0100
-+++ b/config.mk	2023-09-11 13:13:44.519400199 +0100
++++ b/config.mk	2023-09-11 14:39:32.961635769 +0100
 @@ -10,10 +10,6 @@
  X11INC = /usr/X11R6/include
  X11LIB = /usr/X11R6/lib
@@ -28,7 +28,7 @@ diff --color -u a/config.mk b/config.mk
  FREETYPEINC = /usr/include/freetype2
 diff --color -u a/dwm.c b/dwm.c
 --- a/dwm.c	2022-10-04 18:38:18.000000000 +0100
-+++ b/dwm.c	2023-09-11 13:14:42.004633570 +0100
++++ b/dwm.c	2023-09-11 14:39:42.105266527 +0100
 @@ -36,9 +36,6 @@
  #include <X11/Xlib.h>
  #include <X11/Xproto.h>
@@ -39,7 +39,7 @@ diff --color -u a/dwm.c b/dwm.c
  #include <X11/Xft/Xft.h>
 
  #include "drw.h"
-@@ -160,7 +157,6 @@
+@@ -160,14 +157,12 @@
  static void destroynotify(XEvent *e);
  static void detach(Client *c);
  static void detachstack(Client *c);
@@ -47,7 +47,22 @@ diff --color -u a/dwm.c b/dwm.c
  static void drawbar(Monitor *m);
  static void drawbars(void);
  static void enternotify(XEvent *e);
-@@ -681,21 +677,6 @@
+ static void expose(XEvent *e);
+ static void focus(Client *c);
+ static void focusin(XEvent *e);
+-static void focusmon(const Arg *arg);
+ static void focusstack(const Arg *arg);
+ static Atom getatomprop(Client *c, Atom prop);
+ static int getrootptr(int *x, int *y);
+@@ -208,7 +203,6 @@
+ static void sigchld(int unused);
+ static void spawn(const Arg *arg);
+ static void tag(const Arg *arg);
+-static void tagmon(const Arg *arg);
+ static void tile(Monitor *m);
+ static void togglebar(const Arg *arg);
+ static void togglefloating(const Arg *arg);
+@@ -681,21 +675,6 @@
  	}
  }
 
@@ -69,7 +84,7 @@ diff --color -u a/dwm.c b/dwm.c
  void
  drawbar(Monitor *m)
  {
-@@ -823,20 +804,6 @@
+@@ -823,20 +802,6 @@
  }
 
  void
@@ -90,7 +105,7 @@ diff --color -u a/dwm.c b/dwm.c
  focusstack(const Arg *arg)
  {
  	Client *c = NULL, *i;
-@@ -975,18 +942,6 @@
+@@ -975,18 +940,6 @@
  	arrange(selmon);
  }
 
@@ -109,7 +124,7 @@ diff --color -u a/dwm.c b/dwm.c
  void
  keypress(XEvent *e)
  {
-@@ -1659,14 +1614,6 @@
+@@ -1659,14 +1612,6 @@
  }
 
  void
@@ -124,7 +139,7 @@ diff --color -u a/dwm.c b/dwm.c
  tile(Monitor *m)
  {
  	unsigned int i, n, h, mw, my, ty;
-@@ -1851,62 +1798,6 @@
+@@ -1851,62 +1796,6 @@
  {
  	int dirty = 0;
 
